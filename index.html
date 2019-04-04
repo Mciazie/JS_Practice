@@ -13,6 +13,7 @@ function clickedEvt(){
 }
 
 function validateCredit(value) {
+  // Luhn algorithm - see wikipedia
     return !value ? false : value.split('')
         .reverse()
         .map( (x) => parseInt(x) )
