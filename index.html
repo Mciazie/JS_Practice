@@ -1,0 +1,23 @@
+<div id="app"></div>
+
+<input type="text" name="credit" id ="credit"/>
+<input type="button" value="Check" onclick="clickedEvt()"/>
+
+<div id="result"></div>
+
+<script>
+  
+function clickedEvt(){
+  const credit = document.getElementById('credit').value;
+  console.log(validateCredit(credit));
+}
+
+function validateCredit(value) {
+    return !value ? false : value.split('')
+        .reverse()
+        .map( (x) => parseInt(x) )
+        .map( (x,idx) => idx % 2 ? x * 2 : x )
+        .map( (x) => x > 9 ? (x % 10) + 1 : x )
+        .reduce( (accum, x) => accum += x ) % 10 === 0;
+}
+  </script>
